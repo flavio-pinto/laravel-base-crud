@@ -54,7 +54,13 @@ class StadiumController extends Controller
         $stadium->capacity_spectators = $data['capacity_spectators'];
         $stadium->description = $data['description'];
         $saved = $stadium->save();
-        dd($saved);
+        
+        //Redirect to show
+        if($saved) {
+            //Se va a buon fine, cerca l'ultimo record della tabella stadiums, diamo referenza e lo portiamo nel redirect con la route
+            $newStadium = Stadium::find($stadium->id);
+            return redirect()->route('stadiums.show', $newStadium);
+        }
     }
 
     /**
@@ -63,9 +69,10 @@ class StadiumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Stadium $stadium)
     {
-        //
+        //L'url che sta in index con quella rotta arriva qui con l'id definito, quindi grazie al model Stadium Laravel crea una istanza dietro le quinte riconosce che si tratta di un id passato dall'url e fa un find(id)
+        return view('stadiums.show', compact('stadium'));
     }
 
     /**

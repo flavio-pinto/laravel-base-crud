@@ -25,7 +25,7 @@
                         <td>{{$stadium->team_owner}}</td>
                         <td>{{$stadium->capacity_spectators}}</td>
                         <td>{{$stadium->description}}</td>
-                        <td>SHOW</td>
+                        <td><a class="btn btn-success" href="{{route('stadiums.show', $stadium->id)}}">Show</a></td>
                         <td>Update</td>
                         <td>Delete</td>
                     </tr>
