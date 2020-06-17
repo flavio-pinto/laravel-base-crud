@@ -25,7 +25,7 @@ class StadiumController extends Controller
      */
     public function create()
     {
-        //
+        return view('stadiums.create');
     }
 
     /**
@@ -36,7 +36,25 @@ class StadiumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Prendiamo i dati della form e li immagazziniamo in un array $data
+        $data = $request->all();
+
+        //Validazione (le chiavi sono i name degli input e i valori sono le validazioni che decidiamo di inserire)
+        $request->validate([
+            'name' => 'required|unique:stadiums|max:40',
+            'team_owner' => 'required|max:20',
+            'capacity_spectators' => 'required',
+            'description' => 'required'
+        ]);
+
+        //Salva nuovo stadio nel db
+        $stadium = new Stadium();
+        $stadium->name = $data['name']; // ['name'] e le altre chiavi associative che stanno sotto sono prese dai vari "name" degli input del form
+        $stadium->team_owner = $data['team_owner'];
+        $stadium->capacity_spectators = $data['capacity_spectators'];
+        $stadium->description = $data['description'];
+        $saved = $stadium->save();
+        dd($saved);
     }
 
     /**

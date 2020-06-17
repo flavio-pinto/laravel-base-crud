@@ -11,7 +11,7 @@
 
     </head>
     <body>
-        <header>
+        <header class="mb-5">
             <nav class="navbar navbar-expand navbar-light bg-light">
                 <div class="nav-brand">Serie A</div>
                 <ul class="navbar-nav ml-auto">
@@ -20,6 +20,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('stadiums.index')}}">Stadiums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('stadiums.create')}}">Add stadium</a>
                     </li>
                 </ul>
             </nav>
