@@ -16,7 +16,10 @@
                 <div class="nav-brand">Serie A</div>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="{{route('home')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('stadiums.index')}}">Stadiums</a>
                     </li>
                 </ul>
             </nav>

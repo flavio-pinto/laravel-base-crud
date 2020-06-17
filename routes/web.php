@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Homepage
 Route::get('/', 'HomeController@index')->name('home');
+
+//Stadiums
+Route::resource('stadiums', 'StadiumController');
