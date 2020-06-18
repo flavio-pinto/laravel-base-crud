@@ -18,16 +18,16 @@
         @csrf
         @method('POST')
         <div class="form-group">
-            <input type="text" class="form-control" name="name" placeholder="Stadium name">
+            <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Stadium name">  {{-- old serve per mantenere i dati che si sono riempiti in caso dovessero esserci errori di validazione --}}
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="team_owner" placeholder="Stadium owner">
+            <input type="text" class="form-control" name="team_owner" value="{{old('team_owner')}}" placeholder="Stadium owner">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="capacity_spectators" placeholder="Capacity">
+            <input type="text" class="form-control" name="capacity_spectators" value="{{old('capacity_spectators')}}" placeholder="Capacity">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="description" placeholder="Description">
+            <input type="text" class="form-control" name="description" value="{{old('description')}}" placeholder="Description">
         </div>
         <input class="btn btn-primary" type="submit" value="Create">
     </form>
