@@ -117,9 +117,18 @@ class StadiumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Stadium $stadium)
     {
-        //
+        //Referenza entità da eliminare da usare col metodo with nel redirect
+        $ref = $stadium->name;
+
+        //Delete
+        $deleted = $stadium->delete();
+
+        //Redirect with session data
+        if($deleted) {
+            return redirect()->route('stadiums.index')->with('cancelled', $ref); //con with creo una session nell'index, per portarmi le info
+        }
     }
 
     //Utilities

@@ -1,6 +1,13 @@
 @extends('layouts.main')
 
 @section('main-content')
+    {{-- Alert in caso di session delete --}}
+    @if(session('cancelled'))
+        <div class="alert alert-success">
+            {{session('cancelled')}} successfully deleted
+        </div>
+    @endif
+
     <h1 class="mb-4">Stadiums</h1>
 
     <section class="stadiums">
@@ -27,7 +34,13 @@
                         <td>{{$stadium->description}}</td>
                         <td><a class="btn btn-success" href="{{route('stadiums.show', $stadium->id)}}">Show</a></td>
                         <td><a class="btn btn-primary" href="{{route('stadiums.edit', $stadium->id)}}">Edit</a></td>
-                        <td>Delete</td>
+                        <td>
+                            <form action="{{route('stadiums.destroy', $stadium->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
