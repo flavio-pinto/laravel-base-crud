@@ -14,6 +14,7 @@ class CommunicationsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         //Metodo usando Faker
+        //Possiamo eliminare i fake data creati in precedenza così: Student::truncate();
         //Stabilisco numero di risultati da generare
         $records = 10;
         //Ciclo per aggiungere i dati alla tabella

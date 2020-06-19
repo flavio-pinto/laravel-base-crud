@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        //Per chiamare tutti i seeders contemporaneamente. Il comando è php artisan db:seed
+        $this->call([
+            CommunicationsTableSeeder::class,
+            RefereesTableSeeder::class
+        ]);
     }
 }
